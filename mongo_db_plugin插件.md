@@ -2,7 +2,7 @@ EOS区块链使用mongo_db_plugin将区块链的数据写入到mongo数据库中
 
 # 使用场景
 
-由于需要对链上数据进行大量自定义的查询，一般是通过部署自有的节点，然后使用mongo插件将链上数据同步到mongo数据库，然后查询mongo数据库，这样更直接和方便。虽然有其他得替代方案比如[(Hyperion-History-API)](https://github.com/eosrio/Hyperion-History-API)，[(history-tools)](https://github.com/EOSIO/history-tools)，测试下来，mongo更简单直接些。
+由于需要对链上数据进行大量自定义的查询，一般是通过部署自有的节点，然后使用在eos节点上使用mongo插件将链上数据同步到mongo数据库，然后查询mongo数据库，这样更直接和方便。虽然有其他得替代方案比如[(Hyperion-History-API)](https://github.com/eosrio/Hyperion-History-API)，[(history-tools)](https://github.com/EOSIO/history-tools)，测试下来，mongo更简单直接些。
 
 
 
@@ -54,12 +54,16 @@ EOS区块链使用mongo_db_plugin将区块链的数据写入到mongo数据库中
                                         all.
 ```
 
-## 控制写入哪些集合
+## 开启插件
 
-在config.ini中必须开启以下配置，才能将数据写入mongodb的集合中：
+通过配置下面选项，能开启nodeos节点的mongo插件，将链上的数据写入到mongo数据库中。
 
 - plugin=eosio::mongo_db_plugin 
 - mongodb-uri=mongodb://ip:port/EOS 
+
+## 控制写入哪些集合
+
+在config.ini中必须开启以下配置，才能将数据写入mongodb的集合中：
 
 - mongodb-store-block-states = true           #如果并不是特殊需要，建议不要开启，会占用大量存储  
 - mongodb-store-blocks = true                     #如果并不是特殊需要，建议不要开启，会占用大量存储  
